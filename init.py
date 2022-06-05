@@ -7,6 +7,7 @@ PASSWORD="Na123456"
 LOCALHOST="localhost/orcl"
 #DBconnect=cx_Oracle.connect(ID,PASSWORD,LOCALHOST)
 #cursur=DBconnect.cursor()
+
   #make DB of adjection
 print("""
 CREATE TABLE adjective(
@@ -14,8 +15,9 @@ ID int not null
 adjective varchar2(100) not null
 MBTI char(4) not null
 PRIMARY KEY(ID)
-)
+);
 """)
+
   #make DB of name
 print("""
 CREATE TABLE name(
@@ -23,8 +25,9 @@ ID int not null
 name varchar2(100) not null
 gender char(1) not null
 PRIMARY KEY(ID)
-)
+);
 """)
+
   #make DB of question
 print("""
 CREATE TABLE question(
@@ -34,7 +37,7 @@ question varchar(500) not null
 answer1 char(1) not null
 answer2 char(1) not null
 PRIMARY KEY(ID)
-)
+);
 """)
 #connect to excle
 import struct
@@ -43,22 +46,18 @@ from openpyxl import load_workbook
 EXCLEConnect=load_workbook("./mbti_adjectives.xlsx",data_only=True)
 loadSheet=EXCLEConnect['Sheet1']
 start='A3'
-end='B4'#B348
+end='B100'#B348
 getCells=loadSheet[start:end]
 for row in getCells:
-  print(row[0].value)#adjective
-  print(row[1].value)#MBTI
   print(" INSERT INTO adjection (adjective,MBTI) VALUES('"+row[0].value+"','"+row[1].value+"');")
 
   #load name
 EXCLEConnect=load_workbook("./name_gender_dataset.xlsx",data_only=True)
 loadSheet=EXCLEConnect['Worksheet']
 start='A2'
-end='B3'#B147270
+end='B100'#B147270
 getCells=loadSheet[start:end]
 for row in getCells:
-  print(row[0].value)#name
-  print(row[1].value)#gender
   print(" INSERT INTO name (name,gender) VALUES('"+row[0].value+"','"+row[1].value+"');")
 
   #load question
@@ -70,8 +69,6 @@ for type in MBTIType:
   loadSheet=EXCLEConnect[type]
   getCells=loadSheet[start:end]
   for row in getCells:
-    print(row[0].value)#question
-    print(row[1].value)#answer1
     print(" INSERT INTO question (type,question,answer1,answer2) VALUES('"+type+"','"+row[0].value+"','"+row[1].value+"','"+row[2].value+"');")
 
 
