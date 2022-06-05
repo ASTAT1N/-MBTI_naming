@@ -1,0 +1,4 @@
+pip로 불러들인 라이브러리들 목록입니다
+
+pip install openpyxl
+pip install cx_Oracle
