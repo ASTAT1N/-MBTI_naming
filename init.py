@@ -2,8 +2,8 @@
 #connect to db
 
 #import cx_Oracle
-ID="sys"
-PASSWORD="1234"
+ID="admin"
+PASSWORD="Na123456"
 LOCALHOST="localhost/orcl"
 #DBconnect=cx_Oracle.connect(ID,PASSWORD,LOCALHOST)
 #cursur=DBconnect.cursor()
@@ -19,6 +19,7 @@ getCells=loadSheet[start:end]
 for row in getCells:
   print(row[0].value)#adjective
   print(row[1].value)#MBTI
+  print(" INSERT INTO adjection (adjective,MBTI) VALUES('"+row[0].value+"','"+row[1].value+"');")
 
   #load name
 EXCLEConnect=load_workbook("./name_gender_dataset.xlsx",data_only=True)
@@ -29,14 +30,19 @@ getCells=loadSheet[start:end]
 for row in getCells:
   print(row[0].value)#name
   print(row[1].value)#gender
+  print(" INSERT INTO name (name,gender) VALUES('"+row[0].value+"','"+row[1].value+"');")
+
   #load question
 EXCLEConnect=load_workbook("./MBTI_question.xlsx",data_only=True)
-MBTIType=['M','B','T','T']
-loadSheet=EXCLEConnect[MBTIType[0]]
 start='A2'
-end='C3'
-getCells=loadSheet[start:end]
-for row in getCells:
-  print(row[0].value)#question
-  print(row[1].value)#answer1
+end='C4'
+MBTIType=['M','B','T','I']
+for type in MBTIType:
+  loadSheet=EXCLEConnect[type]
+  getCells=loadSheet[start:end]
+  for row in getCells:
+    print(row[0].value)#question
+    print(row[1].value)#answer1
+    print(" INSERT INTO question (type,question,answer1,answer2) VALUES('"+type+"','"+row[0].value+"','"+row[1].value+"','"+row[2].value+"');")
+
 
