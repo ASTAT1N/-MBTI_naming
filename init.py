@@ -7,6 +7,35 @@ PASSWORD="Na123456"
 LOCALHOST="localhost/orcl"
 #DBconnect=cx_Oracle.connect(ID,PASSWORD,LOCALHOST)
 #cursur=DBconnect.cursor()
+  #make DB of adjection
+print("""
+CREATE TABLE adjective(
+ID int not null
+adjective varchar2(100) not null
+MBTI char(4) not null
+PRIMARY KEY(ID)
+)
+""")
+  #make DB of name
+print("""
+CREATE TABLE name(
+ID int not null
+name varchar2(100) not null
+gender char(1) not null
+PRIMARY KEY(ID)
+)
+""")
+  #make DB of question
+print("""
+CREATE TABLE question(
+ID int not null
+type char(1) not null
+question varchar(500) not null
+answer1 char(1) not null
+answer2 char(1) not null
+PRIMARY KEY(ID)
+)
+""")
 #connect to excle
 import struct
 from openpyxl import load_workbook
