@@ -6,8 +6,8 @@ ID="admin"
 PASSWORD="Na123456"
 LOCALHOST="localhost/orcl"
 #DBconnect=cx_Oracle.connect(ID,PASSWORD,LOCALHOST)
-#cursur=DBconnect.cursor()
-
+#cursor=DBconnect.cursor()
+#cursor.execute()
   #make DB of adjection
 print("""
 CREATE TABLE adjective(
