@@ -2,7 +2,11 @@
 #connect to excle
   #load adjection
 from openpyxl import load_workbook
-EXCLEconnect=load_workbook("")
+
+EXCLEAdjectiveConnect=load_workbook("")
+
+  #load name
+EXCLENameConnect=load_workbook("")
 #connect to db
 import cx_Oracle
 ID="user"
