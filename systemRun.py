@@ -47,6 +47,10 @@ while True:
 
 #have some question of MBTI
   #select sequence
+"""
+sequence=[0,1,2,3,4,5,6,7,8]
+random.shuffle(sequence)
+print(sequence)
 sequence=[]
 count=0
 start=1
@@ -56,6 +60,7 @@ while True:
     break
   ms=random.randrange(start,end)
   if not(ms in sequence):
+    print(ms)
     sequence.append(ms)
     count=count+1
     #make randrange more efficiency
@@ -63,13 +68,14 @@ while True:
       start=start=1
     if(ms==(end-1)):
       end=end-1
+"""
 
   #let's quest
 MBTIType=['M','B','T','I']
 answer=[[0,0],[0,0],[0,0],[0,0]]
 
     #get question from DB
-cursor.execute("SELECT * FROM question")
+cursor.execute("SELECT * FROM question ORDER BY dbms_random.value")
 
     #do some quest
 for DBsequence in cursor:
